@@ -1,0 +1,170 @@
+{% extends 'base1.html' %}
+
+{% load crispy_forms_tags %}
+{% block page %}
+{% load static %}
+   <div class="page-header" style="background: url({% static 'site/img/banner1.jpg' %});">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="breadcrumb-wrapper">
+                <h2 class="product-title">Page d'accueil Entreprise</h2>
+                <ol class="breadcrumb">
+                  <li><a href="{% url 'home' %}"><i class="ti-home"></i> Accueil</a></li>
+                  <li class="current">Page d'accueil Entreprise</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}
+
+{% block content %}
+       <div id="content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="right-sideabr">
+                <div class="inner-box">
+                  <h4>Manage Entreprise {{ Entreprise.nom_entreprise }}</h4>
+                  <ul class="lest item">
+                    <li><a href="{% url 'add_evenement' %}">Créer un Évènement</a></li>
+                    <li><a href="{% url 'add_offer' %}">Ajouter une Offre</a></li>
+                    <li><a href="{% url 'email' %}">Envoie d'invitation</a></li>
+                    <li><a href="{% url 'add_employe' %}">Ajouter un representant</a></li>
+                  </ul>
+                  <ul class="lest">
+                    <li><a href="">Change Password</a></li>
+                    <li><a href="{% url 'logout' %}">Déconnexion</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+              <div class="job-alerts-item">
+                <h3 class="alerts-title">Liste Evements</h3>
+                <div class="applications-content">
+                   <ul class="z-depth-1">
+                     {% for e in evenement %}
+                                <li>
+                                    <div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                              <h2>{{ e.title|title }}</h2>
+                                              <span><i class="ti-location-pin"></i> {{ e.lieu }}</span>
+                                            </div>
+                                            <div class="col-md-3">
+                                              <p><i class="ti-calendar"></i>&nbsp;&nbsp;{{ e.date_debut }}</p>
+                                            </div>
+                                            <div class="col-md-3">
+                                              <p><i class="ti-calendar"></i>&nbsp;&nbsp;{{ e.date_fin }}</p>
+                                            </div>
+                                            <div class="col-md-2">
+                                              <a href="{% url 'modif_evenement' id=e.id %}">
+                                                  Modifier
+                                              </a>
+                                            </div>
+                                            <div class="col-md-2">
+                                              <a class="close-icon" onclick="supprimeEvents(this)" data-id="{{ e.id }}">
+                                                <h3><i class="ti-close" style="color:red"><br>Supprimer</i></h3>
+                                              </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li><br>
+                            {% endfor %}
+                         </ul>
+                </div>
+             
+                <!-- Start Pagination -->
+                <br>
+                <ul class="pagination">
+                  <li class="active"><a href="#" class="btn btn-common" ><i class="ti-angle-left"></i> prev</a></li>
+                  <li><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">5</a></li>
+                  <li class="active"><a href="#" class="btn btn-common">Next <i class="ti-angle-right"></i></a></li>
+                </ul>
+                <!-- End Pagination -->
+              </div>
+               <h2 class="medium-title">Offres d'emplois</h2>
+              <div class="job-post-wrapper">
+              <ul>
+                  {% for t in offre %}
+                    <li>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="job-list">
+                                <div class="job-list-content">
+                                    <h4><a href="#">{{ t.titre }}</a><span class="full-time">Temps-Plein</span></h4>
+                                    <p>{{ t.short_description|truncatewords:50 }}</p>
+                                    <div class="job-tag">
+                                      <div class="pull-left">
+                                        <div class="meta-tag">
+                                          <span><i class="ti-location-pin"></i>Montréal, Qc</span>
+                                          <span><i class="ti-time"></i>{{ t.salaire }}$ annuel</span>
+                                        </div>
+                                      </div>
+                                        <div class="pull-right">
+                                        <div class="btn btn-danger btn-rm"><a onclick="supprimeJob(this)" data-id="{{ t.id }}" style="color:white">Supprimer</a></div>
+                                      </div>
+                                      <div class="pull-right">
+                                        <div class="btn btn-common btn-rm"><a href="{% url 'modif_offre' id=t.id %}" style="color:white">Modifier</a></div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                      </li>
+                  {% endfor %}
+              </ul>
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<script>
+
+    function supprimeEvents(t){
+
+        let id = t.dataset.id
+        t.closest('li').remove()
+
+        fetch('', {
+            method: 'SUPPRIME',
+            headers : {
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({
+                'id': id
+            }),
+            credentials: 'same-origin',
+        })
+
+    }
+   
+      function supprimeJob(s){
+
+        let id = s.dataset.id
+        s.closest('li').remove()
+
+        fetch('', {
+            method: 'SUPPRIMEJOB',
+            headers : {
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({
+                'id': id
+            }),
+            credentials: 'same-origin',
+        })
+
+    }
+
+</script>
+{% endblock %}>

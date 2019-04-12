@@ -1,0 +1,78 @@
+{% extends 'base1.html' %}
+
+{% load static %}
+{% load bootstrap4 %}
+
+	{% block page %}
+		{% load static %}
+		   <div class="page-header" style="background: url({% static 'site/img/banner1.jpg' %});">
+				<div class="container">
+				  <div class="row">
+					<div class="col-md-12">
+					  <div class="breadcrumb-wrapper">
+						<h2 class="product-title">Offres d'emplois</h2>
+						<ol class="breadcrumb">
+						  <li><a href="{% url 'home' %}"><i class="ti-home"></i> Accueil</a></li>
+						  <li class="current">Liste Offres</li>
+						</ol>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+    {% endblock %}
+      <!-- Page Header End -->
+{% block content %}
+
+    <h1 class="mt-2">Offres D'emplois</h1>
+    <hr class="mt-0 mb-4">
+{% endblock %}
+
+{% block page1 %}
+      <!-- Job Detail Section Start -->
+      <section class="job-detail section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="header-detail">
+                  <div class="header-content pull-left">
+                    {% comment %}<h3><a href="#">{{evenement.title}}</a></h3>
+                    <p><span>Date Event:    <i class="fa fa-calendar"></i>   {{evenement.date_debut}}</span></p>
+                      <p><span>Lieu Event:  <i class="fa fa-map-marker"></i>   {{evenement.lieu}}</span></p>{% endcomment %}
+
+                        {% for e in offers %}
+                            <div class="row">
+                              <div class="col-md-12">
+                                  <div class="job-list">
+                                      {% comment %}<div class="thumb">
+                                        <a href="job-details.html"><img src="{% static 'site/img/jobs/img-1.jpg' %}" alt=""></a>
+                                      </div>{% endcomment %}
+                                      <div class="job-list-content">
+                                        <h4><a href="#">{{ e.titre|title }}</a></h4>
+                                        <p>{{ e.short_description|truncatewords:50 }}</p>
+                                        <div class="job-tag">
+                                          <div class="pull-left">
+                                            <div class="meta-tag">
+                                              <span><i class="ti-bar-chart"></i>{{ e.salaire }}$CAD</span>
+                                              <span><i class="ti-calendar"></i>{{ e.date_de_debut }}</span>
+                                              <span><i class="ti-calendar"></i>{{ e.dete_de_fin }}</span>
+                                            </div>
+                                          </div>
+                                          <div class="pull-right">
+                                            <a href="detail/{{ e.id }}" class="btn btn-common btn-rm">Plus de details</a>
+{#                                            <a href="/entreprise/evenement/{{ e.id }}" class="btn btn-common btn-rm">Plus de details</a>#}
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                               </div>
+                        {% endfor %}
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Job Detail Section End -->
+	 {% endblock %}

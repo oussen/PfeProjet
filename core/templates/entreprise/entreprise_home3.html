@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Entreprise Home</h1>
+
+
+<a href="{% url 'entreprise-home' %}">Home</a>/
+
+{% if user.is_authenticated %}
+<a href="{% url 'add_employe' %}">employe</a>/
+<a href="{% url 'add_offer' %}">offer</a>/
+<a href="{% url 'add_evenement' %}">Evenement</a>/
+<a href="{% url 'add_invitation' %}">Invitation</a>/
+<a href="{% url 'logout' %}">Logout</a>/
+<strong> You are logged as {{user.username }}</strong>
+{% else %}
+<a href="{% url 'entreprise-signup' %}">Signup</a>/
+<a href="{% url 'login' %}">Login</a>/
+
+
+{% endif %}
+
+
+</body>
+</html>

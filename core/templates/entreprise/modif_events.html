@@ -1,0 +1,49 @@
+{% extends "base1.html" %}
+
+{% load crispy_forms_tags %}
+{% block page %}
+{% load static %}
+   <div class="page-header" style="background: url({% static 'site/img/banner1.jpg' %});">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="breadcrumb-wrapper">
+                <h2 class="product-title">Modifiez votre Evènement</h2>
+                <ol class="breadcrumb">
+                  <li><a href="{% url 'home' %}"><i class="ti-home"></i> Acceuil</a></li>
+                  <li class="current">Modifiez votre Evènement</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}
+
+{% block content %}
+
+     <div id="content" class="my-account">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-6 cd-user-modal">
+              <div class="my-account-form">
+                <ul class="cd-switcher">
+                   <li><a class="selected" href="#0">Modifiez Votre Evènement</a></li>
+                </ul>
+                    <!-- Register Participants-->
+                <div id="cd-login" class="is-selected">
+                  <div class="page-login-form register">
+                        <form method="post">
+                            {% csrf_token %}
+                         {{ form|crispy}}
+                            <button class="btn btn-common log-btn">Modifier</button>
+                        </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+{% endblock %}
+

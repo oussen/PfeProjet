@@ -1,0 +1,251 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% load crispy_forms_tags %}
+
+	{% block page %}
+		{% load static %}
+		   <div class="page-header" style="background: url({% static 'site/img/banner1.jpg' %});">
+				<div class="container">
+				  <div class="row">
+					<div class="col-md-12">
+					  <div class="breadcrumb-wrapper">
+						<h2 class="product-title">Job Detail</h2>
+						<ol class="breadcrumb">
+						  <li><a href="{% url 'home' %}"><i class="ti-home"></i> Accueil</a></li>
+						  <li class="current">Détails du poste</li>
+						</ol>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+    {% endblock %}
+      <!-- Page Header End -->
+{% block content %}
+
+    <h1 class="mt-2">Détails du Poste </h1>
+    <hr class="mt-0 mb-4">
+
+    {% if messages %}
+          {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}"{% endif %}>{{ message }}</div>
+          {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block page1 %}
+
+      <!-- Job Detail Section Start -->
+      <section class="job-detail section">
+        <div class="container">
+          <div class="row">
+           {% comment %} <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="header-detail">
+                  <div class="header-content pull-left">
+                    <h3><a href="#">{{ offer.titre }}</a></h3>
+                    <p><span>Postulez avant :    <i class="fa fa-calendar"></i>   {{ offer.dete_de_fin }}</span></p>
+                  </div>
+                  <div class="detail-company pull-right text-right">
+                  </div>
+                  <div class="clearfix">
+                </div>
+              </div>
+            </div>{% endcomment %}
+
+            <div class="col-md-8 col-sm-12 col-xs-12">
+              <div class="content-area">
+                <div class="clearfix">
+                  <div class="box">
+                    <div class="">
+                       <div class="mt-3">
+
+                                <!-- Post -->
+                                <h2>{{ offer.titre }}</h2>
+                                <small>Postulez avant le <i class="fa fa-calendar"></i><b>  {{ offer.dete_de_fin }}</b></small>
+                                <hr>
+                                <p class="text-muted">
+                                    {{ offer.short_description|linebreaks|safe }}
+                                </p>
+                                <a href="{% url 'offer_list'  %}"
+                                   class="badge badge-info">{{ offer.category.name|capfirst }}</a>
+
+                               <!-- Postule -->
+                                <div id="comments" class="mt-3">
+                                    <!-- User message -->
+                                    <ul class="list-unstyled">
+                                        {% for offer in offers %}
+                                        <li class="media">
+
+                                            <div class="media-body">
+                                                <h5 class="mt-0 mb-1">{{ postule.author_name }}</h5>
+                                                <p>
+                                                    <small class="text-muted">{{ postule.created_at }}</small>
+                                                </p>
+
+                                            </div>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Appliquez ici</button>
+                                   {% comment %} <form action="{% url 'offer_detail' offer.pk %}" method="post" class="form">
+                                        {% csrf_token %}
+                                        {% bootstrap_form postule_form %}
+
+                                        {% buttons %}
+                                            <button type="submit" class="btn btn-primary">Postule</button>
+                                        {% endbuttons %}
+                                    </form>{% endcomment %}
+
+                                </div>
+
+                       </div>
+                    </div>
+
+
+                        <!-- Modal -->
+                      <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h3 class="modal-title">Appliquez à l'offre #{{ offer.titre }}</h3>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{% url 'offer_detail' offer.pk %}" method="post" class="form" role="form">
+                                    {% csrf_token %}
+                                   {% comment %}{% bootstrap_form postule_form  %}{% endcomment %}
+                                    <div class="form-group">
+                                        <label >Votre Email</label>
+                                        <div class="input-icon">
+                                            <input type="email" name="email" maxlength="254" id="id_email" class="form-control" placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="is-valid">
+                                        <label for="id_upload_cv">Upload cv</label>
+                                        <div class="row bootstrap4-multi-input">
+                                            <div class="col-md-8">
+                                                <input type="file" name="upload_cv" class="is-valid" title="" id="id_upload_cv">
+                                            </div>
+                                        </div>
+                                    </div>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                        <div class="form-group">
+                                            <label >Votre Offre</label>
+                                          <div class="input-icon">
+                                            <select rows="4" cols="20" name="offre" class="select form-control"  id="id_offre" >{% for d in test %} <option value="{{ d.id }}">{{ d.titre }}</option>{% endfor %}</select>
+                                          </div>
+                                        </div>
+                                    &nbsp;&nbsp;
+                                    {% buttons %}
+                                        <button type="submit" class="btn btn-primary">Postule</button>
+                                    {% endbuttons %}
+                                </form>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <!-- Job Detail Section End -->
+{% endblock %}
+{% comment %}
+=================================================================
+
+{% extends 'base1.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+
+
+
+
+{% block content %}
+{% if messages %}
+      {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}"{% endif %}>{{ message }}</div>
+      {% endfor %}
+   {% endif %}
+<div class="col-sm-9">
+    <div class="mt-3">
+
+        <!-- Post -->
+        <h2>{{ offer.titre }}</h2>
+        <small>Postulez avant le <b>{{ offer.dete_de_fin }}</b></small>
+        <hr>
+        <p class="text-muted">
+            {{ offer.short_description|linebreaks|safe }}
+        </p>
+        <a href="{% url 'offer_list'  %}"
+           class="badge badge-info">{{ offer.category.name|capfirst }}</a>
+
+    </div>
+
+    <!-- Postule -->
+        <div id="comments" class="mt-3">
+            <!-- User message -->
+            <ul class="list-unstyled">
+                {% for offer in offers %}
+                <li class="media">
+
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1">{{ postule.author_name }}</h5>
+                        <p>
+                            <small class="text-muted">{{ postule.created_at }}</small>
+                        </p>
+
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Appliquez ici</button>
+            <form action="{% url 'offer_detail' offer.pk %}" method="post" class="form">
+                {% csrf_token %}
+                {% bootstrap_form postule_form %}
+
+                {% buttons %}
+                    <button type="submit" class="btn btn-primary">Postule</button>
+                {% endbuttons %}
+            </form>
+
+</div>
+    </div>
+
+    <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Appliquez à l'offre #{{ offer.titre }}</h3>
+        </div>
+        <div class="modal-body">
+            <form action="{% url 'offer_detail' offer.pk %}" method="post" class="form">
+                {% csrf_token %}
+                {% bootstrap_form postule_form %}
+
+                {% buttons %}
+                    <button type="submit" class="btn btn-primary">Postule</button>
+                {% endbuttons %}
+            </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
+========================================================================
+{% endcomment %}

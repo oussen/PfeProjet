@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+
+
+{% block content %}
+<h1>Page acceuil </h1>
+
+welcome to my site , {% if user.is_authenticated%}{{ user.username}} {% else %} visitor {% endif %}
+
+{% for evenement in evenements.all %}
+
+{{evenement.type}}
+
+{% endfor %}
+
+
+{% endblock %}

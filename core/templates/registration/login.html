@@ -1,0 +1,96 @@
+{% extends 'base1.html' %}
+
+
+{% load crispy_forms_tags %}
+{% block page %}
+{% load static %}
+   <div class="page-header" style="background: url({% static 'site/img/banner1.jpg' %});">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="breadcrumb-wrapper">
+                <h2 class="product-title">Connexion</h2>
+                <ol class="breadcrumb">
+                  <li><a href="{% url 'home' %}"><i class="ti-home"></i> Acceuil</a></li>
+                  <li class="current">Connexion</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}
+
+{% block content %}
+
+    <!-- Page Header End -->
+
+      <div id="content" class="my-account">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-6 cd-user-modal">
+              <div class="my-account-form">
+                <ul class="cd-switcher">
+                  <li><a>Connexion</a></li>
+
+                </ul>
+                <!-- Login -->
+                <div id="cd-login" class="is-selected">
+                  <div class="page-login-form">
+                    <form role="form" class="login-form" method="POST">
+                        {% csrf_token %}
+                      <div class="form-group">
+                        <div class="input-icon">
+                          <i class="ti-user"></i>
+                            <input type="text" class="form-control" name="username" autofocus required id="id_username" placeholder="Username">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="input-icon">
+                          <i class="ti-lock"></i>
+                            <input type="password" class="form-control" name="password" autofocus required id="id_password" placeholder="Password">
+                        </div>
+                      </div>
+                      <button class="btn btn-common log-btn">Login</button>
+                      <div class="checkbox-item">
+                        <div class="checkbox">
+                          <label for="rememberme" class="rememberme">
+                          <input name="rememberme" id="rememberme" value="forever" type="checkbox"> Se souvenir de moi</label>
+                        </div>
+                        <p><a href="{% url 'social:begin' 'facebook' %}"> Se connecter avec Facebook</a></p>
+                      </div>
+                      <div>
+                        <p class="cd-form-bottom-message"><a href="#0">Changer votre mot de passe</a></p>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+               {% comment %} <div class="page-login-form" id="cd-reset-password"> <!-- reset password form -->
+                  <p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+                  <form class="cd-form">
+                    <div class="form-group">
+                      <div class="input-icon">
+                        <i class="ti-email"></i>
+                        <input type="text" id="sender-email" class="form-control" name="email" placeholder="Email">
+                      </div>
+                    </div>
+                    <p class="fieldset">
+                      <button class="btn btn-common log-btn" type="submit">Reset password</button>
+                    </p>
+                  </form>
+                  <p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
+                </div>{% endcomment %} <!-- cd-reset-password -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% comment %}<h1 class="mt-2">JobPannel Login</h1>
+    <hr class="mt-0 mb-4">
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br>
+         <button type="submit" class="btn btn-primary">Login</button>
+    </form>{% endcomment %}
+{% endblock %}>

@@ -1,0 +1,42 @@
+{% extends 'base_new.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+
+
+{% block content %}
+
+
+<div class="col-sm-9">
+    {% for evenement in evenements %}
+    <div class="mb-4">
+        <h3><a href="{% url 'evenement_detail' evenement.pk %}">{{ evenement.title }}</a></h3>
+        <small>{{ evenement.lieu }}</small>
+        <small>{{ evenement.date_debut }}</small>
+        <small>{{ evenement.date_fin }}</small>
+        <p class="text-muted">
+            {{ post.description|linebreaks|safe|truncatewords:100 }}
+            <a href="{% url 'evenement_detail' evenement.pk %}">[Plus de details ]</a>
+        </p>
+        <a href="#"
+           class="badge badge-info">{{ evenement.category.name|capfirst }}</a>
+
+    </div>
+    <hr>
+    {% empty %}
+    <div class="text-center">
+        <p class="display-1">:-(</p>
+        <h3 class="mt-4">
+            Sorry, no evenement  for the category <span class="badge badge-info">{{ category.name }}</span>
+        </h3>
+    </div>
+    {% endfor %}
+
+</div>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,230 @@
+	<!-- Page Header start -->
+{% extends 'base1.html' %}
+
+	{% block page %}
+		{% load static %}
+		   <div class="page-header" style="background: url({% static 'site/img/banner1.jpg' %});">
+				<div class="container">
+				  <div class="row">
+					<div class="col-md-12">
+					  <div class="breadcrumb-wrapper">
+						<h2 class="product-title">Entreprises</h2>
+						<ol class="breadcrumb">
+						  <li><a href="{% url 'home' %}"><i class="ti-home"></i> Acceuil</a></li>
+						  <li class="current">Detail de l'entreprise</li>
+						</ol>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+    {% endblock %}
+      <!-- Page Header End -->  
+{% block content %}
+
+    <h1 class="mt-2">Entreprises</h1>
+    <hr class="mt-0 mb-4">
+{% endblock %}	  
+
+{% block page1 %}
+      <!-- Job Detail Section Start -->  
+      <section class="job-detail section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="header-detail">               
+                  <div class="header-content pull-left">
+                    <h3><a href="#">Pomerleau</a></h3>
+{#                    <p><span>Date Event:    <i class="fa fa-calendar"></i> Feb 20, 2019</span></p>#}
+                      <p><span>Siège Social: port Road, Suite 200 St. John's NL A1A 4Y3 <i class="fa fa-map-marker"></i> 1100 Rue Notre Dame Ouest </span></p>
+                  </div>
+                  <div class="detail-company pull-right text-right">
+                    <div class="img-thum">
+                      <img class="img-responsive" src="{% static 'site/img/jobs/pomerleau.jpg' %}" alt="">
+                    </div>
+                    <div class="name">
+                      <h4>Pomerleau Canada</h4>
+                      <h5>Montreal, Mtl </h5>
+                    </div>
+                  </div>
+                  <div class="clearfix">
+                  {% comment %}<div class="meta">
+                    <span><a class="btn btn-border btn-sm" href="#"><i class="ti-email"></i> Email</a></span>
+                    <span><a class="btn btn-border btn-sm" href="#"><i class="ti-info-alt"></i> Job Aleart</a></span>
+                    <span><a class="btn btn-border btn-sm" href="#"><i class="ti-save"></i> Save This job</a></span>
+                    <span><a class="btn btn-border btn-sm" href="#"><i class="ti-alert"></i> Report Abuse</a></span>
+                  </div>{% endcomment %}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8 col-sm-12 col-xs-12">
+              <div class="content-area">
+                <div class="clearfix">
+                    <div class="box">
+                        <h4>Description</h4>
+                        <p>Pomerleau est née en 1966 à St-Georges-de-Beauce. Cinquante ans plus tard, nous sommes un chef de file de l’industrie de la construction au Québec et un joueur dominant au Canada.</p>
+                        <p> En employant jusqu'à 4 000 employés à travers le pays, nous pouvons diriger plus de 150 chantiers simultanément. Qu’il s’agisse de bâtiments, d’infrastructures ou de travaux civils, nous livrons des projets de toutes sortes. Nous sommes passionnés d’innovation et de technologies à la fine pointe, mais – avant tout – nous savons nous adapter. Qu’il s’agisse du mode de réalisation des travaux ou de financement créatif, nous trouvons toujours la meilleure stratégie.</p>
+                        <h4>Nos Valeurs</h4>
+                        <p>Les valeurs qui nous guident:</p>
+                        <ul>
+                        <li><i class="ti-check-box"></i>Authenticité</li>
+                        <li><i class="ti-check-box"></i>Excellence</li>
+                        <li><i class="ti-check-box"></i>Adaptabilité</li>
+                        <li><i class="ti-check-box"></i>Innovation</li>
+                        <li><i class="ti-check-box"></i>Amour</li>
+                        </ul>
+                        {% comment %}<h4>Key responsibilities also include</h4>
+                        <ul>
+                        <li><i class="ti-check-box"></i>Provide technical health advice to Head of Country Programmes and field advisors at all key stages of the project management cycle including needs assessment.</li>
+                        <li><i class="ti-check-box"></i>Technical strategy and design, implementation as well as sector specific monitoring and evaluation.</li>
+                        <li><i class="ti-check-box"></i>This includes travel to field programmes as well as review of proposals, key reports and surveys prior to external submission.</li>
+                        </ul>
+                        <h4>Requirements</h4>
+                        <ul>
+                        <li><i class="ti-check-box"></i>Must have minimum of 3 years experience running, maneuvering, driving, and navigating equipment such as bulldozer, excavators, rollers, and front-end loaders.</li>
+                        <li><i class="ti-check-box"></i>Must have minimum of 3 years experience running, maneuvering, driving, and navigating equipment such as bulldozer, excavators, rollers, and front-end loaders.
+                        Strongly prefer candidates with High School Diploma</li>
+                        </ul>
+                        <h4>Benefits</h4>
+                        <ul>
+                        <li><i class="ti-check-box"></i>Must have minimum of 3 years experience running, maneuvering, driving, and navigating equipment such as bulldozer, excavators, rollers, and front-end loaders.</li>
+                        <li><i class="ti-check-box"></i>Strongly prefer candidates with High School Diploma</li>
+                        </ul>
+                        <a href="#" class="btn btn-common">Apply for this Job Now</a> {% endcomment %}
+                      </div>
+                </div>
+              </div>
+
+              <h2 class="medium-title">Nos Offres d'emploie</h2>
+              <div class="job-post-wrapper">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="job-list">
+                      {% comment %}<div class="thumb">
+                        <a href="job-details.html"><img src="{% static 'site/img/jobs/img-1.jpg' %}" alt=""></a>
+                      </div>{% endcomment %}
+                      <div class="job-list-content">
+                        <h4><a href="job-details.html">Adjoint Administratif</a><span class="full-time">Temps-Plein</span></h4>
+                        <p>Sous la supervision du vice-président principal, le titulaire du poste devra assumer les tâches administratives courantes afin d'assister le vice-président dans la gestion de ses activités quotidiennes.</p>
+                        <div class="job-tag">
+                          <div class="pull-left">
+                            <div class="meta-tag">
+                              <span><i class="ti-location-pin"></i>Montréal, Qc</span>
+                              <span><i class="ti-time"></i>60/Heure</span>
+                            </div>
+                          </div>
+                          <div class="pull-right">
+                            <div class="icon">
+                              <i class="ti-heart"></i>
+                            </div>
+                            <div class="btn btn-common btn-rm">Appplique</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                   {% comment %}<div class="job-list">
+                      <div class="thumb">
+                        <a href="job-details.html"><img src="{% static 'site/img/jobs/img-2jpg' %}" alt=""></a>
+                      </div>
+                      <div class="job-list-content">
+                        <h4><a href="job-details.html">Front-end developer needed</a><span class="full-time">Full-Time</span></h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quaerat aut veniam molestiae atque dolorum omnis temporibus consequuntur saepe. Nemo atque consectetur saepe corporis odit in dicta reprehenderit, officiis, praesentium?</p>
+                        <div class="job-tag">
+                          <div class="pull-left">
+                            <div class="meta-tag">
+                              <span><a href="browse-categories.html"><i class="ti-desktop"></i>Technologies</a></span>
+                              <span><i class="ti-location-pin"></i>Cupertino, CA, USA</span>
+                              <span><i class="ti-time"></i>60/Hour</span>
+                            </div>
+                          </div>
+                          <div class="pull-right">
+                            <div class="icon">
+                              <i class="ti-heart"></i>
+                            </div>
+                            <div class="btn btn-common btn-rm">Apply Job</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="job-list">
+                      <div class="thumb">
+                        <a href="job-details.html"><img src="{% static 'site/img/jobs/img-3.jpg' %}" alt=""></a>
+                      </div>
+                      <div class="job-list-content">
+                        <h4><a href="job-details.html">Software Enginner</a><span class="part-time">Part-Time</span></h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quaerat aut veniam molestiae atque dolorum omnis temporibus consequuntur saepe. Nemo atque consectetur saepe corporis odit in dicta reprehenderit, officiis, praesentium?</p>
+                        <div class="job-tag">
+                          <div class="pull-left">
+                            <div class="meta-tag">
+                              <span><a href="browse-categories.html"><i class="ti-desktop"></i>Technologies</a></span>
+                              <span><i class="ti-location-pin"></i>Cupertino, CA, USA</span>
+                              <span><i class="ti-time"></i>60/Hour</span>
+                            </div>
+                          </div>
+                          <div class="pull-right">
+                            <div class="icon">
+                              <i class="ti-heart"></i>
+                            </div>
+                            <div class="btn btn-common btn-rm">Apply Job</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>{% endcomment %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-12">
+            <aside>
+              <div class="sidebar">
+                  <div class="box">
+                    <h2 class="small-title">Pomerleau</h2>
+                    <ul class="detail-list">
+                      <li>
+                        <a href="">Fondation</a>
+                          <span class="type-posts">1966</span>
+                      </li>
+
+                      <li>
+                        <a href="">Fondateur</a>
+                          <span class="type-posts">St-Georges-de-Beauce</span>
+                      </li>
+                      <li>
+                        <a href="">Type</a>
+                          <span class="type-posts">Industriel</span>
+                      </li>
+                      <li>
+                        <a href="">Regime linguistique</a>
+                          <span class="type-posts">Français</span>
+                      </li>
+                      <li>
+                        <a href="">Nombre d'employés</a>
+                          <span class="type-posts">4000 employés</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="box">
+                    <h2 class="small-title">Représentants</h2>
+                    <div class="thumb">
+                      <a href="https://ca.linkedin.com/in/moutcheu-tchouapy-rodrigue-stephane-bb9786101"><img src="{% static 'site/img/jobs/user1.jpg' %}" alt="img"></a>
+                    </div>
+                    <div class="text-box"> 
+                      <h4><a href="#">Administrateur Système</a></h4>
+                    </div>
+
+                      <div class="thumb">
+                      <a href="#"><img src="{% static 'site/img/jobs/rod.JPG' %}" alt="img"></a>
+                    </div>
+                      <div class="text-box">
+                      <h4><a href="#">Directeur RH</a></h4>
+                       </div>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Job Detail Section End --> 
+	{% endblock %}
+

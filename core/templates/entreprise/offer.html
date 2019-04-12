@@ -1,0 +1,25 @@
+
+{% extends 'base_new.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+
+
+{% block content %}
+
+
+  {{offer.name}}
+  <a href="{% url 'add_offer' %}" > addoffer </a>
+
+
+{% for offer in offers.all %}
+
+    <h1>{{ offer.name }}</h1>
+    <p>{{ offer.short_description }}</p>
+
+  {% csrf_token%}
+
+</form>
+{% endfor %}
+
+{% endblock  %}

@@ -1,0 +1,166 @@
+	<!-- Page Header start -->
+{% extends 'base1.html' %}
+
+	{% block page %}
+		{% load static %}
+		   <div class="page-header" style="background: url({% static 'site/img/banner1.jpg' %});">
+				<div class="container">
+				  <div class="row">
+					<div class="col-md-12">
+					  <div class="breadcrumb-wrapper">
+						<h2 class="product-title">Events Detail</h2>
+						<ol class="breadcrumb">
+						  <li><a href="{% url 'home' %}"><i class="ti-home"></i> Acceuil</a></li>
+						  <li class="current">Detail de l'évènement</li>
+						</ol>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+    {% endblock %}
+      <!-- Page Header End -->  
+{% block content %}
+
+    <h1 class="mt-2">Events</h1>
+    <hr class="mt-0 mb-4">
+{% endblock %}	  
+
+{% block page1 %}
+      <!-- Job Detail Section Start -->  
+      <section class="job-detail section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="header-detail">               
+                  <div class="header-content pull-left">
+                    <h3><a href="#">5 À 7 Etsmobile</a></h3>
+                    <p><span>Date Event:    <i class="fa fa-calendar"></i> Feb 20, 2019</span></p>
+                      <p><span>Lieu Event:  <i class="fa fa-map-marker"></i> 1100 Rue Notre Dame Ouest </span></p>
+                  </div>
+                  <div class="detail-company pull-right text-right">
+                    <div class="img-thum">
+                      <img class="img-responsive" src="{% static 'site/img/jobs/recent-job-detail.jpg' %}" alt="">
+                    </div>
+                    <div class="name">
+                      <h4>ETS</h4>
+                      <h5>Montreal, Mtl </h5>
+                    </div>
+                  </div>
+                  <div class="clearfix">
+                  {% comment %}<div class="meta">
+                    <span><a class="btn btn-border btn-sm" href="#"><i class="ti-email"></i> Email</a></span>
+                    <span><a class="btn btn-border btn-sm" href="#"><i class="ti-info-alt"></i> Job Aleart</a></span>
+                    <span><a class="btn btn-border btn-sm" href="#"><i class="ti-save"></i> Save This job</a></span>
+                    <span><a class="btn btn-border btn-sm" href="#"><i class="ti-alert"></i> Report Abuse</a></span>
+                  </div>{% endcomment %}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8 col-sm-12 col-xs-12">
+              <div class="content-area">
+                <div class="clearfix">
+                <div class="box">        
+                    <h4>Description</h4>
+                    <p>L'École de technologie supérieure (ÉTS) est une constituante du réseau de l'Université du Québec. Fondée en 1974, l'ÉTS est spécialisée dans l’enseignement et la recherche en génie et le transfert technologique. Elle forme des ingénieurs et des chercheurs et elle entretient un partenariat étroit avec le milieu des affaires et l'industrie, tant avec les grandes entreprises qu'avec les PME.</p>
+                    <p>L’ÉTS regroupe près de 25 % de toute la population étudiante au baccalauréat en génie au Québec. Au Canada, elle se situe parmi les cinq plus grandes écoles ou facultés de génie2.</p>
+                    <h4>Activités</h4>
+                    <p>Nous allons tout au long de cette rencontré:</p>
+                    <ul>
+                    <li><i class="ti-check-box"></i>Avoir des témoignages des anciens gradués</li>
+                    <li><i class="ti-check-box"></i>Remise des bourses aux étudiants méritants</li>
+                    <li><i class="ti-check-box"></i>Partager un vin d'honneur</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+                <div id="comments">
+                <h3>Commentaires</h3>
+                <ol class="comments-list">
+                  <li>
+                    <div class="media">
+                      <div class="thumb-left">
+                        <a href="#">
+                          <img alt="" src="{% static 'site/img/blog/user1.jpg' %}" />
+                        </a>
+                      </div>
+                      <div class="info-body">
+                        <h4 class="name">Rodrigue Moutcheu</h4>
+                        <p>Merci pour l'évènement, s'était un plaisir de rencontrer mes collègues</p>
+                        <span class="comment-date">Feb 20, 2019</span>
+                        <a href="#" class="reply-link">Reply</a>
+                      </div>
+                    </div>
+                  </li>
+                </ol>
+                <!-- Start Respond Form -->
+                <div id="respond">
+                  <h2 class="respond-title">Laisser un Commentaire</h2>
+                  <form action="#">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <input id="author" class="form-control" name="author" type="text" value="" size="30" placeholder="Entrez votre nom">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <input id="email" class="form-control" name="author" type="text" value="" size="30" placeholder="Entrez votre email">
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <input id="subject" class="form-control" name="author" type="text" value="" size="30" placeholder="Sujet (optionel)">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <textarea id="comment" class="form-control" name="comment" cols="45" rows="8" placeholder="votre commentaire"></textarea>
+                        </div>
+                        <button type="submit" id="submit" class="btn btn-common">Envoyer</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <!-- End Respond Form -->
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-12">
+            <aside>
+              <div class="sidebar">
+                  <div class="box">
+                    <h2 class="small-title"><center>Entreprises Invitées</center></h2>
+                      <span><center>Cliquez pour consuslter</center></span><br>
+                    <ul class="detail-list">
+                      <li>
+                        <a href="{% url 'detailEntr' %}">Pomeleau</a>
+                          <span class="type-posts">2 représentateurs</span>
+                      </li>
+                      <li>
+                        <a href="https://www.deloitte.com/ca/en.html">Deloite</a>
+                          <span class="type-posts">2 représentateurs</span>
+                      </li>
+                      <li>
+                        <a href="http://ville.montreal.qc.ca">Ville Montréal</a>
+                          <span class="type-posts">3 représentateurs</span>
+                      </li>
+                      <li>
+                        <a href="https://www.cae.com">CAE</a>
+                          <span class="type-posts">1 représentateurs</span>
+                      </li>
+                      <li>
+                        <a href="http://stm.info/fr">STM</a>
+                          <span class="type-posts">2 représentateurs</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Job Detail Section End --> 
+	 {% endblock %}

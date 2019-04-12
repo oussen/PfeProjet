@@ -1,0 +1,82 @@
+{% extends 'base1.html' %}
+
+{% load crispy_forms_tags %}
+{% block page %}
+{% load static %}
+   <div class="page-header" style="background: url({% static 'site/img/banner1.jpg' %});">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="breadcrumb-wrapper">
+                <h2 class="product-title">Créer votre Evènement</h2>
+                <ol class="breadcrumb">
+                  <li><a href="{% url 'home' %}"><i class="ti-home"></i> Acceuil</a></li>
+                  <li class="current">Créer votre Evènement</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}
+
+{% block content %}
+
+     <div id="content" class="my-account">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-6 cd-user-modal">
+              <div class="my-account-form">
+                <ul class="cd-switcher">
+                   <li><a class="selected" href="#0">JobEvents Votre Evènement</a></li>
+                </ul>
+
+                <div id="cd-login" class="is-selected">
+                  <div class="page-login-form register">
+                      <form role="form" class="login-form" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                             <div class="input-icon">
+                                 <i class="ti-bag"></i><input type="text" class="form-control" name="title" autofocus required id="id_title" placeholder="Type d'Évènement">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="input-icon">
+                            <textarea rows="4" cols="70" name="description" class="form-control" autofocus required id="id_description" placeholder="Description"></textarea>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="input-icon">
+                            <select rows="4" cols="70" name="category" class="select form-control"  id="id_category" >{% for c in cat %} <option value="{{ c.id }}">{{ c.name }}</option>{% endfor %}</select>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                             <div class="input-icon">
+                                 <i class="ti-location-arrow"></i><input type="text" class="form-control" name="lieu" autofocus required id="id_lieu" placeholder="lieu de l'Évènement">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-icon">
+                                <i class="ti-flag-alt"></i><input type="text" class="form-control" name="sale" autofocus required id="id_sale" placeholder="salle de l'Évènement">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-icon">
+                                <i class="ti-calendar"></i><input type="text" class="form-control" name="date_debut" autofocus required id="id_date_debut" placeholder="Date de debut">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-icon">
+                                <i class="ti-calendar"></i><input type="text" class="form-control" name="date_fin" autofocus required id="id_date_fin" placeholder="Date de fin">
+                             </div>
+                        </div>
+                        <button class="btn btn-common log-btn">Créer votre Evenement</button>
+                      </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+{% endblock %}
